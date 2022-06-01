@@ -1,0 +1,10 @@
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /links/{link} {
+      allow read;
+    }
+    match /logs/{log} {
+    	allow write;
+    }
+  }
+}

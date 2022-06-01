@@ -1,0 +1,82 @@
+<html>
+<head>
+    <title>JS ShortLinker</title>
+    <noscript>Your browser does not support JavaScript!</noscript>
+</head>
+<body>
+<p id="error"></p>
+</body>
+<script src="https://www.gstatic.com/firebasejs/5.1.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.1.0/firebase-firestore.js"></script>
+<!-- load Firebase SDK before loading this file -->
+<script src="/__/firebase/init.js"></script>
+
+<script>
+
+  // Get url path 
+  var pathName = window.location.pathname.slice(1);
+
+  if (!pathName || pathName === "") {
+      pathName = "empty";
+  }
+
+  //if (pathName === "manage") {
+  //    window.location = "https://www.google.com";
+  //} else {
+
+    // Initialize Cloud Firestore through Firebase
+    const firestore = firebase.firestore();
+    const settings = {timestampsInSnapshots: true};
+    firestore.settings(settings);
+
+    var currentLink = firestore.collection('links').doc(pathName);
+    
+    currentLink.get().then(function(doc) {
+        if (doc.exists) {
+
+            // Write event link log
+            var now = new Date();
+            firestore.collection("logs").doc().set({
+                date: now,
+                type: "visit",
+                link: pathName,
+                destination: doc.data().destination
+            })
+            .then(function() {
+                console.log("Log successfully recorded!");
+            })
+            .catch(function(error) {
+                console.error("Error writing log: ", error);
+            });           
+
+            // For troubleshooting
+            // console.log("Destination link = "+doc.data().destination);
+
+            // Send to final destination
+            window.location = doc.data().destination;
+
+        } else {
+            // doc.data() not found
+            document.getElementById('error').innerHTML = "Link not found.";
+            console.log("That link was not found in our database.");
+
+            // Write event link log
+            var now = new Date();
+            firestore.collection("logs").doc().set({
+                date: now,
+                type: "notfound",
+                link: pathName
+            })
+            .then(function() {
+                console.log("Log successfully recorded!");
+            })
+            .catch(function(error) {
+                console.error("Error writing log: ", error);
+            });   
+        }
+    }).catch(function(error) {
+        console.log("Error getting link:", error);
+    });
+
+</script>
+</html>
