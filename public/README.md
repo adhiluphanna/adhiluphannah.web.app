@@ -59,7 +59,7 @@ This repository has one example, [`repo.md`](repo.md):
 ```md
 ---
 title: Jekyll URL Shortener
-redirect: https://github.com/hlaueriksson/jekyll-url-shortener
+redirect_to: https://github.com/hlaueriksson/jekyll-url-shortener
 permalink: /optional/
 ---
 ```
@@ -72,7 +72,7 @@ This results in:
 
 The `title` could be used to describe the target page. Consider to take the *exact* title of the target page.
 
-The `redirect` is the URL to the target page. This is the only [front matter](https://jekyllrb.com/docs/front-matter/) that is mandatory to make the short link work.
+The `redirect_to` is the URL to the target page. This is the only [front matter](https://jekyllrb.com/docs/front-matter/) that is mandatory to make the short link work.
 
 The file can have a `.md` (Markdown) or `.html` extension.
 

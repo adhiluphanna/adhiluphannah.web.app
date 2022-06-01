@@ -1,4 +1,4 @@
 ---
 title: YouTube
-redirect: https://www.youtube.com/user/FIRSTRobotics900/
+redirect_to: https://www.youtube.com/user/FIRSTRobotics900/
 ---

@@ -1,4 +1,4 @@
 ---
 title: NMIR
-redirect: https://www.surveymonkey.com/r/WH6H3DD
+redirect_to: https://www.surveymonkey.com/r/WH6H3DD
 ---
