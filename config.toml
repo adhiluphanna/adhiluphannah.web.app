@@ -1,3 +1,4 @@
 ######################## default configuration ####################
 baseURL = "https://adhiluphannah.web.app"
 title = "Adhiluphannah"
+theme = "jekyll-theme-minimal"
