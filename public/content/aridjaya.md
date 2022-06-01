@@ -1,4 +1,6 @@
++++
 type = "redirect"
-url = "/cv"
+url = "/aridjaya"
 redirect_to = "https://aridjaya.com"
 redirect_enabled = true
++++
