@@ -1,6 +1,11 @@
 {
   "hosting": {
-    "site": "adhiluphanna",
-    "public": "public"
+    "site": "adhiluphannah",
+    "public": "public",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
   }
 }
